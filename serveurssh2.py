@@ -1,9 +1,10 @@
 import sys
 import threading
+import time
 import logging
 import socket
 import paramiko
-
+from paramiko.ssh_exception import SSHException
 
 logging.basicConfig()
 logger = logging.getLogger()
@@ -11,58 +12,8 @@ logger = logging.getLogger()
 running = True
 host_key = paramiko.RSAKey(filename='id_rsa')
 
-
-def ssh_command_handler(command):
-    print('default : ', command)
-
-
-class Server(paramiko.ServerInterface):
-    def __init__(self):
-        super().__init__()
-        self.event = threading.Event()
-
-    def check_channel_request(self, kind, chanid):
-        print("check_channel_request")
-        if kind == 'session':
-            print("test3")
-            return paramiko.OPEN_SUCCEEDED
-
-    def check_channel_shell_request(self, channel):
-        print("check_channel_shell_request: channel=%s", channel)
-        return True
-
-
-    def check_auth_publickey(self, username, key):
-        return paramiko.AUTH_SUCCESSFUL
-
-    #def get_allowed_auths(self, username):
-    #    return 'publickey'
-
-    def check_channel_exec_request(self, channel, command):
-        print("check_channel_exec_request")
-        global running
-        # This is the command we need to parse
-        if command == 'exit':
-            running = False
-        ssh_command_handler(command)
-        self.event.set()
-        return True
-
-    def check_channel_pty_request(self, channel, term, width, height, pixelwidth, pixelheight, modes):
-        print(
-            "check_channel_pty_request: channel=%s, term=%s, width=%s, height=%s", channel, term, width, height
-        )
-        return True
-        
-    
-    def check_auth_password(self, username, password):
-        print(username)
-        print(password)
-        if username == "user" and password == "password":
-            return paramiko.AUTH_SUCCESSFUL
-        else:
-            return paramiko.AUTH_FAILED
-
+def ssh_command_handler():
+    return
 
 def listener():
     print('listener')
@@ -75,42 +26,22 @@ def listener():
 
     t = paramiko.Transport(client)
     t.set_gss_host(socket.getfqdn(""))
-    #t.load_server_moduli()
     t.add_server_key(host_key)
-    server = Server()
-    t.start_server(server=server)
+    start_server(t)
 
-    chan = t.accept(20)
-    if chan is None:
-        print("*** No channel.")
-        sys.exit(1)
-    print("Authenticated!")
-    server.event.wait(450)
-    if not server.event.is_set():
-        print("*** Client never asked for a shell.")
-        sys.exit(1)
- 
-    chan.send("Success Connect\r\n\r\n")
- 
-    f = chan.makefile("rU")
- 
-    while True:
-        cmd = f.readline().strip("\r\n")
-        myCmd = os.popen(cmd).read()
-        print(myCmd)
-        # chan.send("\r\nGot The Command, " + myCmd + ".\r\n")
+    print("envoi message")
+    message=t.packetizer.read_message()
+    print(message)
 
-    chan.close()
+    #t._send_message("Test")
 
-    # Wait 30 seconds for a command
-    print("server wait")
-    server.event.wait(4)
-    print("server wait finished")
+    #while t.completion_event:
+    #    print("negociation in progress")
+    #    time.sleep(0.2)
+    #    pass
 
-    
-    server.event.wait(30)
-    t.close()
-    print('end listener')
+    time.sleep(10)
+    print("finish")
 
 
 def run_server(command_handler):
@@ -131,6 +62,34 @@ def run_in_thread(command_handler):
     thread = threading.Thread(target=run_server, args=(command_handler,))
     thread.start()
 
-
 if __name__ == '__main__':
     run_in_thread(ssh_command_handler)
+
+def start_server(t, event=None, server=None):
+        if server is None:
+            server = paramiko.ServerInterface()
+        t.server_mode = True
+        t.server_object = server
+        t.active = True
+        if event is not None:
+            # async, return immediately and let the app poll for completion
+            t.completion_event = event
+            t.start()
+            return
+
+        # synchronous, wait for a result
+        t.completion_event = event = threading.Event()
+        t.start()
+        while True:
+            event.wait(0.1)
+            if not t.active:
+                e = t.get_exception()
+                if e is not None:
+                    raise e
+                raise SSHException("Negotiation failed.")
+            if event.is_set():
+                print("Negociation completed")
+                t.active=False
+                break
+                
+                
