@@ -4,6 +4,7 @@ import logging
 import socket
 import paramiko
 
+
 logging.basicConfig()
 logger = logging.getLogger()
 
@@ -17,13 +18,19 @@ def ssh_command_handler(command):
 
 class Server(paramiko.ServerInterface):
     def __init__(self):
+        super().__init__()
         self.event = threading.Event()
 
     def check_channel_request(self, kind, chanid):
-        print("test2")
+        print("check_channel_request")
         if kind == 'session':
             print("test3")
             return paramiko.OPEN_SUCCEEDED
+
+    def check_channel_shell_request(self, channel):
+        print("check_channel_shell_request: channel=%s", channel)
+        return True
+
 
     def check_auth_publickey(self, username, key):
         return paramiko.AUTH_SUCCESSFUL
@@ -32,7 +39,7 @@ class Server(paramiko.ServerInterface):
     #    return 'publickey'
 
     def check_channel_exec_request(self, channel, command):
-        print("test")
+        print("check_channel_exec_request")
         global running
         # This is the command we need to parse
         if command == 'exit':
@@ -40,6 +47,13 @@ class Server(paramiko.ServerInterface):
         ssh_command_handler(command)
         self.event.set()
         return True
+
+    def check_channel_pty_request(self, channel, term, width, height, pixelwidth, pixelheight, modes):
+        print(
+            "check_channel_pty_request: channel=%s, term=%s, width=%s, height=%s", channel, term, width, height
+        )
+        return True
+        
     
     def check_auth_password(self, username, password):
         print(username)
@@ -60,21 +74,40 @@ def listener():
     client, addr = sock.accept()
 
     t = paramiko.Transport(client)
-    #t.set_gss_host(socket.getfqdn(""))
+    t.set_gss_host(socket.getfqdn(""))
     #t.load_server_moduli()
     t.add_server_key(host_key)
     server = Server()
     t.start_server(server=server)
 
+    chan = t.accept(20)
+    if chan is None:
+        print("*** No channel.")
+        sys.exit(1)
+    print("Authenticated!")
+    server.event.wait(450)
+    if not server.event.is_set():
+        print("*** Client never asked for a shell.")
+        sys.exit(1)
+ 
+    chan.send("Success Connect\r\n\r\n")
+ 
+    f = chan.makefile("rU")
+ 
+    while True:
+        cmd = f.readline().strip("\r\n")
+        myCmd = os.popen(cmd).read()
+        print(myCmd)
+        # chan.send("\r\nGot The Command, " + myCmd + ".\r\n")
+
+    chan.close()
+
     # Wait 30 seconds for a command
     print("server wait")
     server.event.wait(4)
     print("server wait finished")
-    session=t.open_session()
-    while True:
-        command= session.recv(1024).decode('utf-8')
-        print(command)
 
+    
     server.event.wait(30)
     t.close()
     print('end listener')
