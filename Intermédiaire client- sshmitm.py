@@ -6,6 +6,8 @@ from threading import Thread
 import threading
 
 
+
+
 PROXY_PORT=2222
 SSH_SERVER_PORT=22
 host_key = paramiko.RSAKey(filename='id_rsa')
@@ -29,16 +31,22 @@ class ClientThread(Thread):
         self.t.add_server_key(host_key)
         start_server(self.t)
 
+
     def run(self):
         while True:
+            try:
+                print("run")
+                message = self.t.packetizer.read_message()
+                print("Received from client : ")
+                print(message)
+                print("______________________________________________________________\n")
             
-            message = self.t.packetizer.read_message()
-            print("Received from client : ")
-            print(message)
-            print("______________________________________________________________\n")
-        
-            
-            self.server._send_message(message[1])
+                
+                self.server._send_message(message[1])
+            except EOFError:
+                print("Client : EOF")
+                time.sleep(1)
+              
 
 class ServerThread(Thread):
     def __init__(self,port):
@@ -48,16 +56,21 @@ class ServerThread(Thread):
         self.sshSocket.connect(('',SSH_SERVER_PORT))
         self.t = paramiko.Transport(self.sshSocket)
         self.t.start_client()
+   
 
     def run(self):
         while True:
-            
-            reception = self.t.packetizer.read_message()
-            print("Received from SSH server : ")
-            print(reception)
-            print("______________________________________________________________\n")
-    
-            self.client._send_message(reception[1])
+            try:
+                reception = self.t.packetizer.read_message()
+                print("Received from SSH server : ")
+                print(reception)
+                print("______________________________________________________________\n")
+        
+                self.client._send_message(reception[1])
+            except EOFError:
+                print("Server : EOF")
+                time.sleep(1)
+                
             
 
 class ProxySSH(Thread):
@@ -105,7 +118,7 @@ def start_server(t, event=None, server=None):
                 raise SSHException("Negotiation failed.")
             if event.is_set():
                 print("Negociation completed")
-                t.active=False
+                #t.active=False
                 break
                 
                 
