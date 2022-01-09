@@ -12,10 +12,13 @@ PROXY_PORT=2222
 SSH_SERVER_PORT=22
 host_key = paramiko.RSAKey(filename='id_rsa')
 
+
+#Here is the thread that will handle incoming message from the client
+#and send them to the vulnerable SSH server
 class ClientThread(Thread):
     def __init__(self,port):
         super(ClientThread, self).__init__()
-        self.server = None # ssh server socket not known yet
+        self.server = None # ssh server transport not known yet but we need it to send the messages
         self.port = port
 
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -26,41 +29,58 @@ class ClientThread(Thread):
         self.client, address = self.socket.accept()
         print('Incoming connexion from' + str(address))
 
+        #We create the transport object with Paramiko
         self.t = paramiko.Transport(self.client)
         self.t.set_gss_host(socket.getfqdn(""))
         self.t.add_server_key(host_key)
-        start_server(self.t)
 
+        #Here, we proceed to the key negociation, the fonction is in the Paramiko's code source
+        self.t.start_server()
 
+        #Here we stop the negociaiton
+        self.t.active=False
+        
     def run(self):
         while True:
             try:
-                print("run")
-                message = self.t.packetizer.read_message()
+                print("run client")
+
+                #We are reading the message from the client
+                ptype, message = self.t.packetizer.read_message()
                 print("Received from client : ")
-                print(message)
+                print(ptype)
+                print(message.asbytes)
                 print("______________________________________________________________\n")
             
-                
-                self.server._send_message(message[1])
+                #We are sending the message to the server
+                self.server._send_message(message)
             except EOFError:
                 print("Client : EOF")
                 time.sleep(1)
-              
 
+              
+#Here is the part of the proxy that will handle incoming message from the vulnerable SSH server
+#and send them to the client
 class ServerThread(Thread):
     def __init__(self,port):
         super(ServerThread, self).__init__()
         self.client = None # client socket not known yet
         self.sshSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sshSocket.connect(('',SSH_SERVER_PORT))
+
+        #We create the transport object
         self.t = paramiko.Transport(self.sshSocket)
+
+        #Here we perfom key negociation
         self.t.start_client()
-   
+
+        #Here we stop the negociation
+        self.t.active=False
 
     def run(self):
         while True:
             try:
+                print("run server")
                 reception = self.t.packetizer.read_message()
                 print("Received from SSH server : ")
                 print(reception)
@@ -70,8 +90,6 @@ class ServerThread(Thread):
             except EOFError:
                 print("Server : EOF")
                 time.sleep(1)
-                
-            
 
 class ProxySSH(Thread):
     def __init__(self,clientPort, serverPort):
@@ -80,8 +98,12 @@ class ProxySSH(Thread):
         self.serverPort = serverPort
 
     def run(self):
+        #Here we create the 2 threads
         self.clientThread = ClientThread(self.clientPort)
         self.serverThread = ServerThread(self.serverPort)
+
+        #We give to the client thread the transport object of the server 
+        #thread and vice versa
         self.clientThread.server = self.serverThread.t
         self.serverThread.client = self.clientThread.t
 
@@ -89,36 +111,7 @@ class ProxySSH(Thread):
         self.serverThread.start()
 
 
-#PROgrammer : trouver moyen de déchiffrer le trafic dans le proxy
-
 proxy= ProxySSH(PROXY_PORT,SSH_SERVER_PORT)
 proxy.start()
 
-def start_server(t, event=None, server=None):
-        if server is None:
-            server = paramiko.ServerInterface()
-        t.server_mode = True
-        t.server_object = server
-        t.active = True
-        if event is not None:
-            # async, return immediately and let the app poll for completion
-            t.completion_event = event
-            t.start()
-            return
-
-        # synchronous, wait for a result
-        t.completion_event = event = threading.Event()
-        t.start()
-        while True:
-            event.wait(0.1)
-            if not t.active:
-                e = t.get_exception()
-                if e is not None:
-                    raise e
-                raise SSHException("Negotiation failed.")
-            if event.is_set():
-                print("Negociation completed")
-                #t.active=False
-                break
-                
                 
