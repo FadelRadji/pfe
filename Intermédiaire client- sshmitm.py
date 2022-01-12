@@ -4,6 +4,7 @@ import paramiko
 from paramiko.ssh_exception import SSHException
 from threading import Thread
 import threading
+import logging
 
 
 
@@ -11,6 +12,11 @@ import threading
 PROXY_PORT=2222
 SSH_SERVER_PORT=22
 host_key = paramiko.RSAKey(filename='id_rsa')
+
+
+logging.basicConfig()
+logging.getLogger("paramiko").setLevel(logging.DEBUG)
+
 
 
 #Here is the thread that will handle incoming message from the client
@@ -47,10 +53,12 @@ class ClientThread(Thread):
 
                 #We are reading the message from the client
                 ptype, message = self.t.packetizer.read_message()
-                print("Received from client : ")
-                print(ptype)
-                print(message.asbytes)
-                print("______________________________________________________________\n")
+                
+                #print("Received from client : ")
+                
+                #print(message.get_text)
+                #print(len(message.asbytes))
+                #print("______________________________________________________________\n")
             
                 #We are sending the message to the server
                 self.server._send_message(message)
@@ -81,12 +89,14 @@ class ServerThread(Thread):
         while True:
             try:
                 print("run server")
-                reception = self.t.packetizer.read_message()
-                print("Received from SSH server : ")
-                print(reception)
-                print("______________________________________________________________\n")
+                ptype, reception = self.t.packetizer.read_message()
+                
+                #print("Received from SSH server : ")
+                #print(reception.asbytes)
+                
+                #print("______________________________________________________________\n")
         
-                self.client._send_message(reception[1])
+                self.client._send_message(reception)
             except EOFError:
                 print("Server : EOF")
                 time.sleep(1)
