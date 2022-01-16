@@ -11,7 +11,7 @@ import logging
 
 PROXY_PORT=2222
 SSH_SERVER_PORT=22
-host_key = paramiko.RSAKey(filename='id_rsa')
+host_key = paramiko.RSAKey(filename='/home/pfe/pfe/id_rsa')
 
 
 logging.basicConfig()
@@ -39,6 +39,9 @@ class ClientThread(Thread):
         self.t = paramiko.Transport(self.client)
         self.t.set_gss_host(socket.getfqdn(""))
         self.t.add_server_key(host_key)
+        
+        self.
+        t.set_hexdump(True)
 
         #Here, we proceed to the key negociation, the fonction is in the Paramiko's code source
         self.t.start_server()
@@ -54,11 +57,11 @@ class ClientThread(Thread):
                 #We are reading the message from the client
                 ptype, message = self.t.packetizer.read_message()
                 
-                #print("Received from client : ")
+                print("Received from client : ")
                 
-                #print(message.get_text)
-                #print(len(message.asbytes))
-                #print("______________________________________________________________\n")
+                print(message.get_text)
+                print(len(message.asbytes))
+                print("______________________________________________________________\n")
             
                 #We are sending the message to the server
                 self.server._send_message(message)
@@ -79,6 +82,7 @@ class ServerThread(Thread):
         #We create the transport object
         self.t = paramiko.Transport(self.sshSocket)
 
+        self.t.set_hexdump(True)
         #Here we perfom key negociation
         self.t.start_client()
 
@@ -91,10 +95,10 @@ class ServerThread(Thread):
                 print("run server")
                 ptype, reception = self.t.packetizer.read_message()
                 
-                #print("Received from SSH server : ")
-                #print(reception.asbytes)
+                print("Received from SSH server : ")
+                print(reception.asbytes)
                 
-                #print("______________________________________________________________\n")
+                print("______________________________________________________________\n")
         
                 self.client._send_message(reception)
             except EOFError:
