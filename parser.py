@@ -6,13 +6,12 @@ with open('/home/pfe/pfe/logstest.txt') as f:
 # print(lines)
 # print(lines[10])
 
-str = '68 61 32 2D 6E 69 73 74 70 33 38 34 2C 65 63 64'
-txt = "ha2-nistp384,ecd"
+# str = '68 61 32 2D 6E 69 73 74 70 33 38 34 2C 65 63 64'
+# txt = "ha2-nistp384,ecd"
 
-str = str.replace(' ', '')
-# print(str)
 
-bytes = bytearray.fromhex(str)
+# 
+# bytes = bytearray.fromhex(str)
 # print(bytes)
 
 parsed=[]
@@ -34,5 +33,12 @@ for k in range(len(parsed)):
     elif parsed[k].startswith("DEBUG:paramiko.transport:IN"):
         parsed[k]=parsed[k][29:76]
 
-for line in parsed:
-    print(
+# for line in parsed:
+#     print(line)
+
+messages = []
+
+for line in parsed :
+    messages.append(bytearray.fromhex(line))
+    
+print(messages)

@@ -1,0 +1,316 @@
+DEBUG:paramiko.transport:starting thread (client mode): 0x70a90fd0
+DEBUG:paramiko.transport:Local version/idstring: SSH-2.0-paramiko_2.6.0
+DEBUG:paramiko.transport:Remote version/idstring: SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+DEBUG:paramiko.transport:Write packet <kexinit>, length 865
+DEBUG:paramiko.transport:OUT: 00 00 03 6C 0A 14 12 94 04 AF 7E 84 28 D5 4D FE    ...l......~.(.M.
+DEBUG:paramiko.transport:OUT: 07 1F C2 BB 87 B7 00 00 01 10 63 75 72 76 65 32    ..........curve2
+DEBUG:paramiko.transport:OUT: 35 35 31 39 2D 73 68 61 32 35 36 40 6C 69 62 73    5519-sha256@libs
+DEBUG:paramiko.transport:OUT: 73 68 2E 6F 72 67 2C 65 63 64 68 2D 73 68 61 32    sh.org,ecdh-sha2
+DEBUG:paramiko.transport:OUT: 2D 6E 69 73 74 70 32 35 36 2C 65 63 64 68 2D 73    -nistp256,ecdh-s
+DEBUG:paramiko.transport:OUT: 68 61 32 2D 6E 69 73 74 70 33 38 34 2C 65 63 64    ha2-nistp384,ecd
+DEBUG:paramiko.transport:OUT: 68 2D 73 68 61 32 2D 6E 69 73 74 70 35 32 31 2C    h-sha2-nistp521,
+DEBUG:paramiko.transport:OUT: 64 69 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67    diffie-hellman-g
+DEBUG:paramiko.transport:OUT: 72 6F 75 70 31 36 2D 73 68 61 35 31 32 2C 64 69    roup16-sha512,di
+DEBUG:paramiko.transport:OUT: 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72 6F    ffie-hellman-gro
+DEBUG:paramiko.transport:OUT: 75 70 2D 65 78 63 68 61 6E 67 65 2D 73 68 61 32    up-exchange-sha2
+DEBUG:paramiko.transport:OUT: 35 36 2C 64 69 66 66 69 65 2D 68 65 6C 6C 6D 61    56,diffie-hellma
+DEBUG:paramiko.transport:OUT: 6E 2D 67 72 6F 75 70 31 34 2D 73 68 61 32 35 36    n-group14-sha256
+DEBUG:paramiko.transport:OUT: 2C 64 69 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D    ,diffie-hellman-
+DEBUG:paramiko.transport:OUT: 67 72 6F 75 70 2D 65 78 63 68 61 6E 67 65 2D 73    group-exchange-s
+DEBUG:paramiko.transport:OUT: 68 61 31 2C 64 69 66 66 69 65 2D 68 65 6C 6C 6D    ha1,diffie-hellm
+DEBUG:paramiko.transport:OUT: 61 6E 2D 67 72 6F 75 70 31 34 2D 73 68 61 31 2C    an-group14-sha1,
+DEBUG:paramiko.transport:OUT: 64 69 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67    diffie-hellman-g
+DEBUG:paramiko.transport:OUT: 72 6F 75 70 31 2D 73 68 61 31 00 00 00 57 73 73    roup1-sha1...Wss
+DEBUG:paramiko.transport:OUT: 68 2D 65 64 32 35 35 31 39 2C 65 63 64 73 61 2D    h-ed25519,ecdsa-
+DEBUG:paramiko.transport:OUT: 73 68 61 32 2D 6E 69 73 74 70 32 35 36 2C 65 63    sha2-nistp256,ec
+DEBUG:paramiko.transport:OUT: 64 73 61 2D 73 68 61 32 2D 6E 69 73 74 70 33 38    dsa-sha2-nistp38
+DEBUG:paramiko.transport:OUT: 34 2C 65 63 64 73 61 2D 73 68 61 32 2D 6E 69 73    4,ecdsa-sha2-nis
+DEBUG:paramiko.transport:OUT: 74 70 35 32 31 2C 73 73 68 2D 72 73 61 2C 73 73    tp521,ssh-rsa,ss
+DEBUG:paramiko.transport:OUT: 68 2D 64 73 73 00 00 00 57 61 65 73 31 32 38 2D    h-dss...Waes128-
+DEBUG:paramiko.transport:OUT: 63 74 72 2C 61 65 73 31 39 32 2D 63 74 72 2C 61    ctr,aes192-ctr,a
+DEBUG:paramiko.transport:OUT: 65 73 32 35 36 2D 63 74 72 2C 61 65 73 31 32 38    es256-ctr,aes128
+DEBUG:paramiko.transport:OUT: 2D 63 62 63 2C 61 65 73 31 39 32 2D 63 62 63 2C    -cbc,aes192-cbc,
+DEBUG:paramiko.transport:OUT: 61 65 73 32 35 36 2D 63 62 63 2C 62 6C 6F 77 66    aes256-cbc,blowf
+DEBUG:paramiko.transport:OUT: 69 73 68 2D 63 62 63 2C 33 64 65 73 2D 63 62 63    ish-cbc,3des-cbc
+DEBUG:paramiko.transport:OUT: 00 00 00 57 61 65 73 31 32 38 2D 63 74 72 2C 61    ...Waes128-ctr,a
+DEBUG:paramiko.transport:OUT: 65 73 31 39 32 2D 63 74 72 2C 61 65 73 32 35 36    es192-ctr,aes256
+DEBUG:paramiko.transport:OUT: 2D 63 74 72 2C 61 65 73 31 32 38 2D 63 62 63 2C    -ctr,aes128-cbc,
+DEBUG:paramiko.transport:OUT: 61 65 73 31 39 32 2D 63 62 63 2C 61 65 73 32 35    aes192-cbc,aes25
+DEBUG:paramiko.transport:OUT: 36 2D 63 62 63 2C 62 6C 6F 77 66 69 73 68 2D 63    6-cbc,blowfish-c
+DEBUG:paramiko.transport:OUT: 62 63 2C 33 64 65 73 2D 63 62 63 00 00 00 83 68    bc,3des-cbc....h
+DEBUG:paramiko.transport:OUT: 6D 61 63 2D 73 68 61 32 2D 32 35 36 2C 68 6D 61    mac-sha2-256,hma
+DEBUG:paramiko.transport:OUT: 63 2D 73 68 61 32 2D 35 31 32 2C 68 6D 61 63 2D    c-sha2-512,hmac-
+DEBUG:paramiko.transport:OUT: 73 68 61 32 2D 32 35 36 2D 65 74 6D 40 6F 70 65    sha2-256-etm@ope
+DEBUG:paramiko.transport:OUT: 6E 73 73 68 2E 63 6F 6D 2C 68 6D 61 63 2D 73 68    nssh.com,hmac-sh
+DEBUG:paramiko.transport:OUT: 61 32 2D 35 31 32 2D 65 74 6D 40 6F 70 65 6E 73    a2-512-etm@opens
+DEBUG:paramiko.transport:OUT: 73 68 2E 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 31    sh.com,hmac-sha1
+DEBUG:paramiko.transport:OUT: 2C 68 6D 61 63 2D 6D 64 35 2C 68 6D 61 63 2D 73    ,hmac-md5,hmac-s
+DEBUG:paramiko.transport:OUT: 68 61 31 2D 39 36 2C 68 6D 61 63 2D 6D 64 35 2D    ha1-96,hmac-md5-
+DEBUG:paramiko.transport:OUT: 39 36 00 00 00 83 68 6D 61 63 2D 73 68 61 32 2D    96....hmac-sha2-
+DEBUG:paramiko.transport:OUT: 32 35 36 2C 68 6D 61 63 2D 73 68 61 32 2D 35 31    256,hmac-sha2-51
+DEBUG:paramiko.transport:OUT: 32 2C 68 6D 61 63 2D 73 68 61 32 2D 32 35 36 2D    2,hmac-sha2-256-
+DEBUG:paramiko.transport:OUT: 65 74 6D 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C    etm@openssh.com,
+DEBUG:paramiko.transport:OUT: 68 6D 61 63 2D 73 68 61 32 2D 35 31 32 2D 65 74    hmac-sha2-512-et
+DEBUG:paramiko.transport:OUT: 6D 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 68 6D    m@openssh.com,hm
+DEBUG:paramiko.transport:OUT: 61 63 2D 73 68 61 31 2C 68 6D 61 63 2D 6D 64 35    ac-sha1,hmac-md5
+DEBUG:paramiko.transport:OUT: 2C 68 6D 61 63 2D 73 68 61 31 2D 39 36 2C 68 6D    ,hmac-sha1-96,hm
+DEBUG:paramiko.transport:OUT: 61 63 2D 6D 64 35 2D 39 36 00 00 00 04 6E 6F 6E    ac-md5-96....non
+DEBUG:paramiko.transport:OUT: 65 00 00 00 04 6E 6F 6E 65 00 00 00 00 00 00 00    e....none.......
+DEBUG:paramiko.transport:OUT: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+DEBUG:paramiko.transport:OUTPAYLOAD: 14 12 94 04 AF 7E 84 28 D5 4D FE 07 1F C2 BB 87    .....~.(.M......
+DEBUG:paramiko.transport:OUTPAYLOAD: B7 00 00 01 10 63 75 72 76 65 32 35 35 31 39 2D    .....curve25519-
+DEBUG:paramiko.transport:OUTPAYLOAD: 73 68 61 32 35 36 40 6C 69 62 73 73 68 2E 6F 72    sha256@libssh.or
+DEBUG:paramiko.transport:OUTPAYLOAD: 67 2C 65 63 64 68 2D 73 68 61 32 2D 6E 69 73 74    g,ecdh-sha2-nist
+DEBUG:paramiko.transport:OUTPAYLOAD: 70 32 35 36 2C 65 63 64 68 2D 73 68 61 32 2D 6E    p256,ecdh-sha2-n
+DEBUG:paramiko.transport:OUTPAYLOAD: 69 73 74 70 33 38 34 2C 65 63 64 68 2D 73 68 61    istp384,ecdh-sha
+DEBUG:paramiko.transport:OUTPAYLOAD: 32 2D 6E 69 73 74 70 35 32 31 2C 64 69 66 66 69    2-nistp521,diffi
+DEBUG:paramiko.transport:OUTPAYLOAD: 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72 6F 75 70 31    e-hellman-group1
+DEBUG:paramiko.transport:OUTPAYLOAD: 36 2D 73 68 61 35 31 32 2C 64 69 66 66 69 65 2D    6-sha512,diffie-
+DEBUG:paramiko.transport:OUTPAYLOAD: 68 65 6C 6C 6D 61 6E 2D 67 72 6F 75 70 2D 65 78    hellman-group-ex
+DEBUG:paramiko.transport:OUTPAYLOAD: 63 68 61 6E 67 65 2D 73 68 61 32 35 36 2C 64 69    change-sha256,di
+DEBUG:paramiko.transport:OUTPAYLOAD: 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72 6F    ffie-hellman-gro
+DEBUG:paramiko.transport:OUTPAYLOAD: 75 70 31 34 2D 73 68 61 32 35 36 2C 64 69 66 66    up14-sha256,diff
+DEBUG:paramiko.transport:OUTPAYLOAD: 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72 6F 75 70    ie-hellman-group
+DEBUG:paramiko.transport:OUTPAYLOAD: 2D 65 78 63 68 61 6E 67 65 2D 73 68 61 31 2C 64    -exchange-sha1,d
+DEBUG:paramiko.transport:OUTPAYLOAD: 69 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72    iffie-hellman-gr
+DEBUG:paramiko.transport:OUTPAYLOAD: 6F 75 70 31 34 2D 73 68 61 31 2C 64 69 66 66 69    oup14-sha1,diffi
+DEBUG:paramiko.transport:OUTPAYLOAD: 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72 6F 75 70 31    e-hellman-group1
+DEBUG:paramiko.transport:OUTPAYLOAD: 2D 73 68 61 31 00 00 00 57 73 73 68 2D 65 64 32    -sha1...Wssh-ed2
+DEBUG:paramiko.transport:OUTPAYLOAD: 35 35 31 39 2C 65 63 64 73 61 2D 73 68 61 32 2D    5519,ecdsa-sha2-
+DEBUG:paramiko.transport:OUTPAYLOAD: 6E 69 73 74 70 32 35 36 2C 65 63 64 73 61 2D 73    nistp256,ecdsa-s
+DEBUG:paramiko.transport:OUTPAYLOAD: 68 61 32 2D 6E 69 73 74 70 33 38 34 2C 65 63 64    ha2-nistp384,ecd
+DEBUG:paramiko.transport:OUTPAYLOAD: 73 61 2D 73 68 61 32 2D 6E 69 73 74 70 35 32 31    sa-sha2-nistp521
+DEBUG:paramiko.transport:OUTPAYLOAD: 2C 73 73 68 2D 72 73 61 2C 73 73 68 2D 64 73 73    ,ssh-rsa,ssh-dss
+DEBUG:paramiko.transport:OUTPAYLOAD: 00 00 00 57 61 65 73 31 32 38 2D 63 74 72 2C 61    ...Waes128-ctr,a
+DEBUG:paramiko.transport:OUTPAYLOAD: 65 73 31 39 32 2D 63 74 72 2C 61 65 73 32 35 36    es192-ctr,aes256
+DEBUG:paramiko.transport:OUTPAYLOAD: 2D 63 74 72 2C 61 65 73 31 32 38 2D 63 62 63 2C    -ctr,aes128-cbc,
+DEBUG:paramiko.transport:OUTPAYLOAD: 61 65 73 31 39 32 2D 63 62 63 2C 61 65 73 32 35    aes192-cbc,aes25
+DEBUG:paramiko.transport:OUTPAYLOAD: 36 2D 63 62 63 2C 62 6C 6F 77 66 69 73 68 2D 63    6-cbc,blowfish-c
+DEBUG:paramiko.transport:OUTPAYLOAD: 62 63 2C 33 64 65 73 2D 63 62 63 00 00 00 57 61    bc,3des-cbc...Wa
+DEBUG:paramiko.transport:OUTPAYLOAD: 65 73 31 32 38 2D 63 74 72 2C 61 65 73 31 39 32    es128-ctr,aes192
+DEBUG:paramiko.transport:OUTPAYLOAD: 2D 63 74 72 2C 61 65 73 32 35 36 2D 63 74 72 2C    -ctr,aes256-ctr,
+DEBUG:paramiko.transport:OUTPAYLOAD: 61 65 73 31 32 38 2D 63 62 63 2C 61 65 73 31 39    aes128-cbc,aes19
+DEBUG:paramiko.transport:OUTPAYLOAD: 32 2D 63 62 63 2C 61 65 73 32 35 36 2D 63 62 63    2-cbc,aes256-cbc
+DEBUG:paramiko.transport:OUTPAYLOAD: 2C 62 6C 6F 77 66 69 73 68 2D 63 62 63 2C 33 64    ,blowfish-cbc,3d
+DEBUG:paramiko.transport:OUTPAYLOAD: 65 73 2D 63 62 63 00 00 00 83 68 6D 61 63 2D 73    es-cbc....hmac-s
+DEBUG:paramiko.transport:OUTPAYLOAD: 68 61 32 2D 32 35 36 2C 68 6D 61 63 2D 73 68 61    ha2-256,hmac-sha
+DEBUG:paramiko.transport:OUTPAYLOAD: 32 2D 35 31 32 2C 68 6D 61 63 2D 73 68 61 32 2D    2-512,hmac-sha2-
+DEBUG:paramiko.transport:OUTPAYLOAD: 32 35 36 2D 65 74 6D 40 6F 70 65 6E 73 73 68 2E    256-etm@openssh.
+DEBUG:paramiko.transport:OUTPAYLOAD: 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 32 2D 35 31    com,hmac-sha2-51
+DEBUG:paramiko.transport:OUTPAYLOAD: 32 2D 65 74 6D 40 6F 70 65 6E 73 73 68 2E 63 6F    2-etm@openssh.co
+DEBUG:paramiko.transport:OUTPAYLOAD: 6D 2C 68 6D 61 63 2D 73 68 61 31 2C 68 6D 61 63    m,hmac-sha1,hmac
+DEBUG:paramiko.transport:OUTPAYLOAD: 2D 6D 64 35 2C 68 6D 61 63 2D 73 68 61 31 2D 39    -md5,hmac-sha1-9
+DEBUG:paramiko.transport:OUTPAYLOAD: 36 2C 68 6D 61 63 2D 6D 64 35 2D 39 36 00 00 00    6,hmac-md5-96...
+DEBUG:paramiko.transport:OUTPAYLOAD: 83 68 6D 61 63 2D 73 68 61 32 2D 32 35 36 2C 68    .hmac-sha2-256,h
+DEBUG:paramiko.transport:OUTPAYLOAD: 6D 61 63 2D 73 68 61 32 2D 35 31 32 2C 68 6D 61    mac-sha2-512,hma
+DEBUG:paramiko.transport:OUTPAYLOAD: 63 2D 73 68 61 32 2D 32 35 36 2D 65 74 6D 40 6F    c-sha2-256-etm@o
+DEBUG:paramiko.transport:OUTPAYLOAD: 70 65 6E 73 73 68 2E 63 6F 6D 2C 68 6D 61 63 2D    penssh.com,hmac-
+DEBUG:paramiko.transport:OUTPAYLOAD: 73 68 61 32 2D 35 31 32 2D 65 74 6D 40 6F 70 65    sha2-512-etm@ope
+DEBUG:paramiko.transport:OUTPAYLOAD: 6E 73 73 68 2E 63 6F 6D 2C 68 6D 61 63 2D 73 68    nssh.com,hmac-sh
+DEBUG:paramiko.transport:OUTPAYLOAD: 61 31 2C 68 6D 61 63 2D 6D 64 35 2C 68 6D 61 63    a1,hmac-md5,hmac
+DEBUG:paramiko.transport:OUTPAYLOAD: 2D 73 68 61 31 2D 39 36 2C 68 6D 61 63 2D 6D 64    -sha1-96,hmac-md
+DEBUG:paramiko.transport:OUTPAYLOAD: 35 2D 39 36 00 00 00 04 6E 6F 6E 65 00 00 00 04    5-96....none....
+DEBUG:paramiko.transport:OUTPAYLOAD: 6E 6F 6E 65 00 00 00 00 00 00 00 00 00 00 00 00    none............
+DEBUG:paramiko.transport:OUTPAYLOAD: 00                                                 .
+DEBUG:paramiko.transport:IN: 00 00 04 1C 0A 14 69 65                            ......ie
+DEBUG:paramiko.transport:IN: 0A 14 69 65 CB A9 43 28 70 07 7C 65 07 BD 1C DB    ..ie..C(p.|e....
+DEBUG:paramiko.transport:IN: 75 4D 00 00 00 E6 63 75 72 76 65 32 35 35 31 39    uM....curve25519
+DEBUG:paramiko.transport:IN: 2D 73 68 61 32 35 36 2C 63 75 72 76 65 32 35 35    -sha256,curve255
+DEBUG:paramiko.transport:IN: 31 39 2D 73 68 61 32 35 36 40 6C 69 62 73 73 68    19-sha256@libssh
+DEBUG:paramiko.transport:IN: 2E 6F 72 67 2C 65 63 64 68 2D 73 68 61 32 2D 6E    .org,ecdh-sha2-n
+DEBUG:paramiko.transport:IN: 69 73 74 70 32 35 36 2C 65 63 64 68 2D 73 68 61    istp256,ecdh-sha
+DEBUG:paramiko.transport:IN: 32 2D 6E 69 73 74 70 33 38 34 2C 65 63 64 68 2D    2-nistp384,ecdh-
+DEBUG:paramiko.transport:IN: 73 68 61 32 2D 6E 69 73 74 70 35 32 31 2C 64 69    sha2-nistp521,di
+DEBUG:paramiko.transport:IN: 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72 6F    ffie-hellman-gro
+DEBUG:paramiko.transport:IN: 75 70 2D 65 78 63 68 61 6E 67 65 2D 73 68 61 32    up-exchange-sha2
+DEBUG:paramiko.transport:IN: 35 36 2C 64 69 66 66 69 65 2D 68 65 6C 6C 6D 61    56,diffie-hellma
+DEBUG:paramiko.transport:IN: 6E 2D 67 72 6F 75 70 31 36 2D 73 68 61 35 31 32    n-group16-sha512
+DEBUG:paramiko.transport:IN: 2C 64 69 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D    ,diffie-hellman-
+DEBUG:paramiko.transport:IN: 67 72 6F 75 70 31 38 2D 73 68 61 35 31 32 2C 64    group18-sha512,d
+DEBUG:paramiko.transport:IN: 69 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72    iffie-hellman-gr
+DEBUG:paramiko.transport:IN: 6F 75 70 31 34 2D 73 68 61 32 35 36 00 00 00 41    oup14-sha256...A
+DEBUG:paramiko.transport:IN: 72 73 61 2D 73 68 61 32 2D 35 31 32 2C 72 73 61    rsa-sha2-512,rsa
+DEBUG:paramiko.transport:IN: 2D 73 68 61 32 2D 32 35 36 2C 73 73 68 2D 72 73    -sha2-256,ssh-rs
+DEBUG:paramiko.transport:IN: 61 2C 65 63 64 73 61 2D 73 68 61 32 2D 6E 69 73    a,ecdsa-sha2-nis
+DEBUG:paramiko.transport:IN: 74 70 32 35 36 2C 73 73 68 2D 65 64 32 35 35 31    tp256,ssh-ed2551
+DEBUG:paramiko.transport:IN: 39 00 00 00 6C 63 68 61 63 68 61 32 30 2D 70 6F    9...lchacha20-po
+DEBUG:paramiko.transport:IN: 6C 79 31 33 30 35 40 6F 70 65 6E 73 73 68 2E 63    ly1305@openssh.c
+DEBUG:paramiko.transport:IN: 6F 6D 2C 61 65 73 31 32 38 2D 63 74 72 2C 61 65    om,aes128-ctr,ae
+DEBUG:paramiko.transport:IN: 73 31 39 32 2D 63 74 72 2C 61 65 73 32 35 36 2D    s192-ctr,aes256-
+DEBUG:paramiko.transport:IN: 63 74 72 2C 61 65 73 31 32 38 2D 67 63 6D 40 6F    ctr,aes128-gcm@o
+DEBUG:paramiko.transport:IN: 70 65 6E 73 73 68 2E 63 6F 6D 2C 61 65 73 32 35    penssh.com,aes25
+DEBUG:paramiko.transport:IN: 36 2D 67 63 6D 40 6F 70 65 6E 73 73 68 2E 63 6F    6-gcm@openssh.co
+DEBUG:paramiko.transport:IN: 6D 00 00 00 6C 63 68 61 63 68 61 32 30 2D 70 6F    m...lchacha20-po
+DEBUG:paramiko.transport:IN: 6C 79 31 33 30 35 40 6F 70 65 6E 73 73 68 2E 63    ly1305@openssh.c
+DEBUG:paramiko.transport:IN: 6F 6D 2C 61 65 73 31 32 38 2D 63 74 72 2C 61 65    om,aes128-ctr,ae
+DEBUG:paramiko.transport:IN: 73 31 39 32 2D 63 74 72 2C 61 65 73 32 35 36 2D    s192-ctr,aes256-
+DEBUG:paramiko.transport:IN: 63 74 72 2C 61 65 73 31 32 38 2D 67 63 6D 40 6F    ctr,aes128-gcm@o
+DEBUG:paramiko.transport:IN: 70 65 6E 73 73 68 2E 63 6F 6D 2C 61 65 73 32 35    penssh.com,aes25
+DEBUG:paramiko.transport:IN: 36 2D 67 63 6D 40 6F 70 65 6E 73 73 68 2E 63 6F    6-gcm@openssh.co
+DEBUG:paramiko.transport:IN: 6D 00 00 00 D5 75 6D 61 63 2D 36 34 2D 65 74 6D    m....umac-64-etm
+DEBUG:paramiko.transport:IN: 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 75 6D 61    @openssh.com,uma
+DEBUG:paramiko.transport:IN: 63 2D 31 32 38 2D 65 74 6D 40 6F 70 65 6E 73 73    c-128-etm@openss
+DEBUG:paramiko.transport:IN: 68 2E 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 32 2D    h.com,hmac-sha2-
+DEBUG:paramiko.transport:IN: 32 35 36 2D 65 74 6D 40 6F 70 65 6E 73 73 68 2E    256-etm@openssh.
+DEBUG:paramiko.transport:IN: 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 32 2D 35 31    com,hmac-sha2-51
+DEBUG:paramiko.transport:IN: 32 2D 65 74 6D 40 6F 70 65 6E 73 73 68 2E 63 6F    2-etm@openssh.co
+DEBUG:paramiko.transport:IN: 6D 2C 68 6D 61 63 2D 73 68 61 31 2D 65 74 6D 40    m,hmac-sha1-etm@
+DEBUG:paramiko.transport:IN: 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 75 6D 61 63    openssh.com,umac
+DEBUG:paramiko.transport:IN: 2D 36 34 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C    -64@openssh.com,
+DEBUG:paramiko.transport:IN: 75 6D 61 63 2D 31 32 38 40 6F 70 65 6E 73 73 68    umac-128@openssh
+DEBUG:paramiko.transport:IN: 2E 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 32 2D 32    .com,hmac-sha2-2
+DEBUG:paramiko.transport:IN: 35 36 2C 68 6D 61 63 2D 73 68 61 32 2D 35 31 32    56,hmac-sha2-512
+DEBUG:paramiko.transport:IN: 2C 68 6D 61 63 2D 73 68 61 31 00 00 00 D5 75 6D    ,hmac-sha1....um
+DEBUG:paramiko.transport:IN: 61 63 2D 36 34 2D 65 74 6D 40 6F 70 65 6E 73 73    ac-64-etm@openss
+DEBUG:paramiko.transport:IN: 68 2E 63 6F 6D 2C 75 6D 61 63 2D 31 32 38 2D 65    h.com,umac-128-e
+DEBUG:paramiko.transport:IN: 74 6D 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 68    tm@openssh.com,h
+DEBUG:paramiko.transport:IN: 6D 61 63 2D 73 68 61 32 2D 32 35 36 2D 65 74 6D    mac-sha2-256-etm
+DEBUG:paramiko.transport:IN: 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 68 6D 61    @openssh.com,hma
+DEBUG:paramiko.transport:IN: 63 2D 73 68 61 32 2D 35 31 32 2D 65 74 6D 40 6F    c-sha2-512-etm@o
+DEBUG:paramiko.transport:IN: 70 65 6E 73 73 68 2E 63 6F 6D 2C 68 6D 61 63 2D    penssh.com,hmac-
+DEBUG:paramiko.transport:IN: 73 68 61 31 2D 65 74 6D 40 6F 70 65 6E 73 73 68    sha1-etm@openssh
+DEBUG:paramiko.transport:IN: 2E 63 6F 6D 2C 75 6D 61 63 2D 36 34 40 6F 70 65    .com,umac-64@ope
+DEBUG:paramiko.transport:IN: 6E 73 73 68 2E 63 6F 6D 2C 75 6D 61 63 2D 31 32    nssh.com,umac-12
+DEBUG:paramiko.transport:IN: 38 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 68 6D    8@openssh.com,hm
+DEBUG:paramiko.transport:IN: 61 63 2D 73 68 61 32 2D 32 35 36 2C 68 6D 61 63    ac-sha2-256,hmac
+DEBUG:paramiko.transport:IN: 2D 73 68 61 32 2D 35 31 32 2C 68 6D 61 63 2D 73    -sha2-512,hmac-s
+DEBUG:paramiko.transport:IN: 68 61 31 00 00 00 15 6E 6F 6E 65 2C 7A 6C 69 62    ha1....none,zlib
+DEBUG:paramiko.transport:IN: 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 00 00 00 15    @openssh.com....
+DEBUG:paramiko.transport:IN: 6E 6F 6E 65 2C 7A 6C 69 62 40 6F 70 65 6E 73 73    none,zlib@openss
+DEBUG:paramiko.transport:IN: 68 2E 63 6F 6D 00 00 00 00 00 00 00 00 00 00 00    h.com...........
+DEBUG:paramiko.transport:IN: 00 00 00 00 00 00 00 00 00 00 00 00                ............
+DEBUG:paramiko.transport:Got payload (1052 bytes, 10 padding)
+DEBUG:paramiko.transport:INPAYLOAD: 14 69 65 CB A9 43 28 70 07 7C 65 07 BD 1C DB 75    .ie..C(p.|e....u
+DEBUG:paramiko.transport:INPAYLOAD: 4D 00 00 00 E6 63 75 72 76 65 32 35 35 31 39 2D    M....curve25519-
+DEBUG:paramiko.transport:INPAYLOAD: 73 68 61 32 35 36 2C 63 75 72 76 65 32 35 35 31    sha256,curve2551
+DEBUG:paramiko.transport:INPAYLOAD: 39 2D 73 68 61 32 35 36 40 6C 69 62 73 73 68 2E    9-sha256@libssh.
+DEBUG:paramiko.transport:INPAYLOAD: 6F 72 67 2C 65 63 64 68 2D 73 68 61 32 2D 6E 69    org,ecdh-sha2-ni
+DEBUG:paramiko.transport:INPAYLOAD: 73 74 70 32 35 36 2C 65 63 64 68 2D 73 68 61 32    stp256,ecdh-sha2
+DEBUG:paramiko.transport:INPAYLOAD: 2D 6E 69 73 74 70 33 38 34 2C 65 63 64 68 2D 73    -nistp384,ecdh-s
+DEBUG:paramiko.transport:INPAYLOAD: 68 61 32 2D 6E 69 73 74 70 35 32 31 2C 64 69 66    ha2-nistp521,dif
+DEBUG:paramiko.transport:INPAYLOAD: 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72 6F 75    fie-hellman-grou
+DEBUG:paramiko.transport:INPAYLOAD: 70 2D 65 78 63 68 61 6E 67 65 2D 73 68 61 32 35    p-exchange-sha25
+DEBUG:paramiko.transport:INPAYLOAD: 36 2C 64 69 66 66 69 65 2D 68 65 6C 6C 6D 61 6E    6,diffie-hellman
+DEBUG:paramiko.transport:INPAYLOAD: 2D 67 72 6F 75 70 31 36 2D 73 68 61 35 31 32 2C    -group16-sha512,
+DEBUG:paramiko.transport:INPAYLOAD: 64 69 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67    diffie-hellman-g
+DEBUG:paramiko.transport:INPAYLOAD: 72 6F 75 70 31 38 2D 73 68 61 35 31 32 2C 64 69    roup18-sha512,di
+DEBUG:paramiko.transport:INPAYLOAD: 66 66 69 65 2D 68 65 6C 6C 6D 61 6E 2D 67 72 6F    ffie-hellman-gro
+DEBUG:paramiko.transport:INPAYLOAD: 75 70 31 34 2D 73 68 61 32 35 36 00 00 00 41 72    up14-sha256...Ar
+DEBUG:paramiko.transport:INPAYLOAD: 73 61 2D 73 68 61 32 2D 35 31 32 2C 72 73 61 2D    sa-sha2-512,rsa-
+DEBUG:paramiko.transport:INPAYLOAD: 73 68 61 32 2D 32 35 36 2C 73 73 68 2D 72 73 61    sha2-256,ssh-rsa
+DEBUG:paramiko.transport:INPAYLOAD: 2C 65 63 64 73 61 2D 73 68 61 32 2D 6E 69 73 74    ,ecdsa-sha2-nist
+DEBUG:paramiko.transport:INPAYLOAD: 70 32 35 36 2C 73 73 68 2D 65 64 32 35 35 31 39    p256,ssh-ed25519
+DEBUG:paramiko.transport:INPAYLOAD: 00 00 00 6C 63 68 61 63 68 61 32 30 2D 70 6F 6C    ...lchacha20-pol
+DEBUG:paramiko.transport:INPAYLOAD: 79 31 33 30 35 40 6F 70 65 6E 73 73 68 2E 63 6F    y1305@openssh.co
+DEBUG:paramiko.transport:INPAYLOAD: 6D 2C 61 65 73 31 32 38 2D 63 74 72 2C 61 65 73    m,aes128-ctr,aes
+DEBUG:paramiko.transport:INPAYLOAD: 31 39 32 2D 63 74 72 2C 61 65 73 32 35 36 2D 63    192-ctr,aes256-c
+DEBUG:paramiko.transport:INPAYLOAD: 74 72 2C 61 65 73 31 32 38 2D 67 63 6D 40 6F 70    tr,aes128-gcm@op
+DEBUG:paramiko.transport:INPAYLOAD: 65 6E 73 73 68 2E 63 6F 6D 2C 61 65 73 32 35 36    enssh.com,aes256
+DEBUG:paramiko.transport:INPAYLOAD: 2D 67 63 6D 40 6F 70 65 6E 73 73 68 2E 63 6F 6D    -gcm@openssh.com
+DEBUG:paramiko.transport:INPAYLOAD: 00 00 00 6C 63 68 61 63 68 61 32 30 2D 70 6F 6C    ...lchacha20-pol
+DEBUG:paramiko.transport:INPAYLOAD: 79 31 33 30 35 40 6F 70 65 6E 73 73 68 2E 63 6F    y1305@openssh.co
+DEBUG:paramiko.transport:INPAYLOAD: 6D 2C 61 65 73 31 32 38 2D 63 74 72 2C 61 65 73    m,aes128-ctr,aes
+DEBUG:paramiko.transport:INPAYLOAD: 31 39 32 2D 63 74 72 2C 61 65 73 32 35 36 2D 63    192-ctr,aes256-c
+DEBUG:paramiko.transport:INPAYLOAD: 74 72 2C 61 65 73 31 32 38 2D 67 63 6D 40 6F 70    tr,aes128-gcm@op
+DEBUG:paramiko.transport:INPAYLOAD: 65 6E 73 73 68 2E 63 6F 6D 2C 61 65 73 32 35 36    enssh.com,aes256
+DEBUG:paramiko.transport:INPAYLOAD: 2D 67 63 6D 40 6F 70 65 6E 73 73 68 2E 63 6F 6D    -gcm@openssh.com
+DEBUG:paramiko.transport:INPAYLOAD: 00 00 00 D5 75 6D 61 63 2D 36 34 2D 65 74 6D 40    ....umac-64-etm@
+DEBUG:paramiko.transport:INPAYLOAD: 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 75 6D 61 63    openssh.com,umac
+DEBUG:paramiko.transport:INPAYLOAD: 2D 31 32 38 2D 65 74 6D 40 6F 70 65 6E 73 73 68    -128-etm@openssh
+DEBUG:paramiko.transport:INPAYLOAD: 2E 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 32 2D 32    .com,hmac-sha2-2
+DEBUG:paramiko.transport:INPAYLOAD: 35 36 2D 65 74 6D 40 6F 70 65 6E 73 73 68 2E 63    56-etm@openssh.c
+DEBUG:paramiko.transport:INPAYLOAD: 6F 6D 2C 68 6D 61 63 2D 73 68 61 32 2D 35 31 32    om,hmac-sha2-512
+DEBUG:paramiko.transport:INPAYLOAD: 2D 65 74 6D 40 6F 70 65 6E 73 73 68 2E 63 6F 6D    -etm@openssh.com
+DEBUG:paramiko.transport:INPAYLOAD: 2C 68 6D 61 63 2D 73 68 61 31 2D 65 74 6D 40 6F    ,hmac-sha1-etm@o
+DEBUG:paramiko.transport:INPAYLOAD: 70 65 6E 73 73 68 2E 63 6F 6D 2C 75 6D 61 63 2D    penssh.com,umac-
+DEBUG:paramiko.transport:INPAYLOAD: 36 34 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 75    64@openssh.com,u
+DEBUG:paramiko.transport:INPAYLOAD: 6D 61 63 2D 31 32 38 40 6F 70 65 6E 73 73 68 2E    mac-128@openssh.
+DEBUG:paramiko.transport:INPAYLOAD: 63 6F 6D 2C 68 6D 61 63 2D 73 68 61 32 2D 32 35    com,hmac-sha2-25
+DEBUG:paramiko.transport:INPAYLOAD: 36 2C 68 6D 61 63 2D 73 68 61 32 2D 35 31 32 2C    6,hmac-sha2-512,
+DEBUG:paramiko.transport:INPAYLOAD: 68 6D 61 63 2D 73 68 61 31 00 00 00 D5 75 6D 61    hmac-sha1....uma
+DEBUG:paramiko.transport:INPAYLOAD: 63 2D 36 34 2D 65 74 6D 40 6F 70 65 6E 73 73 68    c-64-etm@openssh
+DEBUG:paramiko.transport:INPAYLOAD: 2E 63 6F 6D 2C 75 6D 61 63 2D 31 32 38 2D 65 74    .com,umac-128-et
+DEBUG:paramiko.transport:INPAYLOAD: 6D 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 68 6D    m@openssh.com,hm
+DEBUG:paramiko.transport:INPAYLOAD: 61 63 2D 73 68 61 32 2D 32 35 36 2D 65 74 6D 40    ac-sha2-256-etm@
+DEBUG:paramiko.transport:INPAYLOAD: 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 68 6D 61 63    openssh.com,hmac
+DEBUG:paramiko.transport:INPAYLOAD: 2D 73 68 61 32 2D 35 31 32 2D 65 74 6D 40 6F 70    -sha2-512-etm@op
+DEBUG:paramiko.transport:INPAYLOAD: 65 6E 73 73 68 2E 63 6F 6D 2C 68 6D 61 63 2D 73    enssh.com,hmac-s
+DEBUG:paramiko.transport:INPAYLOAD: 68 61 31 2D 65 74 6D 40 6F 70 65 6E 73 73 68 2E    ha1-etm@openssh.
+DEBUG:paramiko.transport:INPAYLOAD: 63 6F 6D 2C 75 6D 61 63 2D 36 34 40 6F 70 65 6E    com,umac-64@open
+DEBUG:paramiko.transport:INPAYLOAD: 73 73 68 2E 63 6F 6D 2C 75 6D 61 63 2D 31 32 38    ssh.com,umac-128
+DEBUG:paramiko.transport:INPAYLOAD: 40 6F 70 65 6E 73 73 68 2E 63 6F 6D 2C 68 6D 61    @openssh.com,hma
+DEBUG:paramiko.transport:INPAYLOAD: 63 2D 73 68 61 32 2D 32 35 36 2C 68 6D 61 63 2D    c-sha2-256,hmac-
+DEBUG:paramiko.transport:INPAYLOAD: 73 68 61 32 2D 35 31 32 2C 68 6D 61 63 2D 73 68    sha2-512,hmac-sh
+DEBUG:paramiko.transport:INPAYLOAD: 61 31 00 00 00 15 6E 6F 6E 65 2C 7A 6C 69 62 40    a1....none,zlib@
+DEBUG:paramiko.transport:INPAYLOAD: 6F 70 65 6E 73 73 68 2E 63 6F 6D 00 00 00 15 6E    openssh.com....n
+DEBUG:paramiko.transport:INPAYLOAD: 6F 6E 65 2C 7A 6C 69 62 40 6F 70 65 6E 73 73 68    one,zlib@openssh
+DEBUG:paramiko.transport:INPAYLOAD: 2E 63 6F 6D 00 00 00 00 00 00 00 00 00 00 00 00    .com............
+DEBUG:paramiko.transport:INPAYLOAD: 00                                                 .
+DEBUG:paramiko.transport:Read packet <kexinit>, length 1041
+DEBUG:paramiko.transport:kex algos:['curve25519-sha256', 'curve25519-sha256@libssh.org', 'ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group16-sha512', 'diffie-hellman-group18-sha512', 'diffie-hellman-group14-sha256'] server key:['rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa', 'ecdsa-sha2-nistp256', 'ssh-ed25519'] client encrypt:['chacha20-poly1305@openssh.com', 'aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'aes128-gcm@openssh.com', 'aes256-gcm@openssh.com'] server encrypt:['chacha20-poly1305@openssh.com', 'aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'aes128-gcm@openssh.com', 'aes256-gcm@openssh.com'] client mac:['umac-64-etm@openssh.com', 'umac-128-etm@openssh.com', 'hmac-sha2-256-etm@openssh.com', 'hmac-sha2-512-etm@openssh.com', 'hmac-sha1-etm@openssh.com', 'umac-64@openssh.com', 'umac-128@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-sha1'] server mac:['umac-64-etm@openssh.com', 'umac-128-etm@openssh.com', 'hmac-sha2-256-etm@openssh.com', 'hmac-sha2-512-etm@openssh.com', 'hmac-sha1-etm@openssh.com', 'umac-64@openssh.com', 'umac-128@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-sha1'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+DEBUG:paramiko.transport:Kex agreed: curve25519-sha256@libssh.org
+DEBUG:paramiko.transport:HostKey agreed: ssh-ed25519
+DEBUG:paramiko.transport:Cipher agreed: aes128-ctr
+DEBUG:paramiko.transport:MAC agreed: hmac-sha2-256
+DEBUG:paramiko.transport:Compression agreed: none
+DEBUG:paramiko.transport:Write packet <kex30>, length 37
+DEBUG:paramiko.transport:OUT: 00 00 00 2C 06 1E 00 00 00 20 1B 39 B8 A1 A5 AE    ...,..... .9....
+DEBUG:paramiko.transport:OUT: EF 9E 0A F7 F1 68 79 B8 14 B9 C2 5C CD CE 86 43    .....hy....\...C
+DEBUG:paramiko.transport:OUT: 7D C7 37 3D 11 10 F1 E8 03 59 00 00 00 00 00 00    }.7=.....Y......
+DEBUG:paramiko.transport:OUTPAYLOAD: 1E 00 00 00 20 1B 39 B8 A1 A5 AE EF 9E 0A F7 F1    .... .9.........
+DEBUG:paramiko.transport:OUTPAYLOAD: 68 79 B8 14 B9 C2 5C CD CE 86 43 7D C7 37 3D 11    hy....\...C}.7=.
+DEBUG:paramiko.transport:OUTPAYLOAD: 10 F1 E8 03 59                                     ....Y
+DEBUG:paramiko.transport:IN: 00 00 00 BC 08 1F 00 00                            ........
+DEBUG:paramiko.transport:IN: 08 1F 00 00 00 33 00 00 00 0B 73 73 68 2D 65 64    .....3....ssh-ed
+DEBUG:paramiko.transport:IN: 32 35 35 31 39 00 00 00 20 74 00 AA 3B 52 78 F4    25519... t..;Rx.
+DEBUG:paramiko.transport:IN: 86 73 AF 28 D8 3A 4F 2B 16 DD 67 D7 A2 0C ED CB    .s.(.:O+..g.....
+DEBUG:paramiko.transport:IN: 47 32 54 19 0F 8E E0 14 54 00 00 00 20 B9 52 CF    G2T.....T... .R.
+DEBUG:paramiko.transport:IN: 00 FF 11 D5 D7 5C 12 9F 40 05 D3 9F 06 B5 C9 66    .....\..@......f
+DEBUG:paramiko.transport:IN: 46 56 4A B7 46 DE 00 82 22 55 6A F2 41 00 00 00    FVJ.F..."Uj.A...
+DEBUG:paramiko.transport:IN: 53 00 00 00 0B 73 73 68 2D 65 64 32 35 35 31 39    S....ssh-ed25519
+DEBUG:paramiko.transport:IN: 00 00 00 40 B3 A0 29 FD 08 1F 21 79 EE E9 C6 FC    ...@..)...!y....
+DEBUG:paramiko.transport:IN: B2 64 F3 BA B3 78 D0 9F 38 7D BD 72 FE 19 10 A4    .d...x..8}.r....
+DEBUG:paramiko.transport:IN: 17 AC C0 F8 3E 45 CE 44 21 CF 53 0B 4A 8E 5C 4F    ....>E.D!.S.J.\O
+DEBUG:paramiko.transport:IN: 98 60 30 EA 4B 4B 6B A7 4D 5E 54 DD EE C6 E5 0B    .`0.KKk.M^T.....
+DEBUG:paramiko.transport:IN: A4 06 62 0D 00 00 00 00 00 00 00 00                ..b.........
+DEBUG:paramiko.transport:Got payload (188 bytes, 8 padding)
+DEBUG:paramiko.transport:INPAYLOAD: 1F 00 00 00 33 00 00 00 0B 73 73 68 2D 65 64 32    ....3....ssh-ed2
+DEBUG:paramiko.transport:INPAYLOAD: 35 35 31 39 00 00 00 20 74 00 AA 3B 52 78 F4 86    5519... t..;Rx..
+DEBUG:paramiko.transport:INPAYLOAD: 73 AF 28 D8 3A 4F 2B 16 DD 67 D7 A2 0C ED CB 47    s.(.:O+..g.....G
+DEBUG:paramiko.transport:INPAYLOAD: 32 54 19 0F 8E E0 14 54 00 00 00 20 B9 52 CF 00    2T.....T... .R..
+DEBUG:paramiko.transport:INPAYLOAD: FF 11 D5 D7 5C 12 9F 40 05 D3 9F 06 B5 C9 66 46    ....\..@......fF
+DEBUG:paramiko.transport:INPAYLOAD: 56 4A B7 46 DE 00 82 22 55 6A F2 41 00 00 00 53    VJ.F..."Uj.A...S
+DEBUG:paramiko.transport:INPAYLOAD: 00 00 00 0B 73 73 68 2D 65 64 32 35 35 31 39 00    ....ssh-ed25519.
+DEBUG:paramiko.transport:INPAYLOAD: 00 00 40 B3 A0 29 FD 08 1F 21 79 EE E9 C6 FC B2    ..@..)...!y.....
+DEBUG:paramiko.transport:INPAYLOAD: 64 F3 BA B3 78 D0 9F 38 7D BD 72 FE 19 10 A4 17    d...x..8}.r.....
+DEBUG:paramiko.transport:INPAYLOAD: AC C0 F8 3E 45 CE 44 21 CF 53 0B 4A 8E 5C 4F 98    ...>E.D!.S.J.\O.
+DEBUG:paramiko.transport:INPAYLOAD: 60 30 EA 4B 4B 6B A7 4D 5E 54 DD EE C6 E5 0B A4    `0.KKk.M^T......
+DEBUG:paramiko.transport:INPAYLOAD: 06 62 0D                                           .b.
+DEBUG:paramiko.transport:Read packet <kex31>, length 179
+DEBUG:paramiko.transport:Write packet <newkeys>, length 1
+DEBUG:paramiko.transport:OUT: 00 00 00 0C 0A 15 00 00 00 00 00 00 00 00 00 00    ................
+DEBUG:paramiko.transport:OUTPAYLOAD: 15                                                 .
+DEBUG:paramiko.transport:kex engine KexCurve25519 specified hash_algo <built-in function openssl_sha256>
+DEBUG:paramiko.transport:IN: 00 00 00 0C 0A 15 00 00                            ........
+DEBUG:paramiko.transport:IN: 0A 15 00 00 00 00 00 00 00 00 00 00                ............
+DEBUG:paramiko.transport:Got payload (12 bytes, 10 padding)
+DEBUG:paramiko.transport:INPAYLOAD: 15                                                 .
+DEBUG:paramiko.transport:Read packet <newkeys>, length 1
+DEBUG:paramiko.transport:Switch to new keys ...
+DEBUG:paramiko.transport:Write packet <service-request>, length 17
+DEBUG:paramiko.transport:OUT: 00 00 00 1C 0A 05 00 00 00 0C 73 73 68 2D 75 73    ..........ssh-us
+DEBUG:paramiko.transport:OUT: 65 72 61 75 74 68 00 00 00 00 00 00 00 00 00 00    erauth..........
+DEBUG:paramiko.transport:OUTPAYLOAD: 05 00 00 00 0C 73 73 68 2D 75 73 65 72 61 75 74    .....ssh-useraut
+DEBUG:paramiko.transport:OUTPAYLOAD: 68                                                 h
+DEBUG:paramiko.transport:IN: 00 00 00 1C 0A 06 00 00 00 0C 73 73 68 2D 75 73    ..........ssh-us
+DEBUG:paramiko.transport:IN: 0A 06 00 00 00 0C 73 73 68 2D 75 73 65 72 61 75    ......ssh-userau
+DEBUG:paramiko.transport:IN: 74 68 B6 64 85 A0 F7 86 95 10 FC A2                th.d........
+DEBUG:paramiko.transport:Got payload (28 bytes, 10 padding)
+DEBUG:paramiko.transport:INPAYLOAD: 06 00 00 00 0C 73 73 68 2D 75 73 65 72 61 75 74    .....ssh-useraut
+DEBUG:paramiko.transport:INPAYLOAD: 68                                                 h
+DEBUG:paramiko.transport:Read packet <service-accept>, length 17
+WARNING:paramiko.transport:Oops, unhandled type 6 ('service-accept')
+DEBUG:paramiko.transport:Write packet <unimplemented>, length 5
+DEBUG:paramiko.transport:OUT: 00 00 00 0C 06 03 00 00 00 03 00 00 00 00 00 00    ................
+DEBUG:paramiko.transport:OUTPAYLOAD: 03 00 00 00 03                                     .....
