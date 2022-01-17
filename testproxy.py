@@ -2,7 +2,7 @@ import paramiko
 import logging
 import socket
 import time
-logging.basicConfig(filename="/home/pfe/pfe/authrequest8.log")
+logging.basicConfig(filename="/home/pfe/pfe/authrequest9.log")
 logging.getLogger("paramiko").setLevel(logging.DEBUG)
 
 hostname = "127.0.0.1"
@@ -34,18 +34,22 @@ try:
     transport._send_message(message)
     
     time.sleep(1)
-    messageerr = paramiko.message.Message()
-    byteserr = bytearray.fromhex(strerr)
-    messageerr.add_bytes(byteserr)
-    transport._send_message(messageerr)
+    # messageerr = paramiko.message.Message()
+    # byteserr = bytearray.fromhex(strerr)
+    # messageerr.add_bytes(byteserr)
+    # transport._send_message(messageerr)
+    
+    transport._send_message(message)
+    # while True:
+    #     ptype, msg = transport.packetizer.read_message()
 
-
+   ##       print(msg)
+    #     print(ptype)
+    # 
     time.sleep(1)
-    transport.packetizer.read_message()
-    time.sleep(1)
     
-    
-    
-except Exception as err:
+except paramiko.SSHException as err:
+    print(err)
     pass
+    
     
