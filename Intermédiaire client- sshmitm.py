@@ -5,17 +5,20 @@ from paramiko.ssh_exception import SSHException
 from threading import Thread
 import threading
 import logging
+from queue import Queue
 
 
 
 
 PROXY_PORT=2222
 SSH_SERVER_PORT=22
-host_key = paramiko.RSAKey(filename='/home/pfe/pfe/id_rsa')
+SSH_SERVER_PORT_DROP_BEAR=2223
+host_key = paramiko.RSAKey(filename='id_rsa')
 
 
-logging.basicConfig()
-logging.getLogger("paramiko").setLevel(logging.DEBUG)
+#logging.basicConfig()
+#logging.getLogger("paramiko").setLevel(logging.DEBUG)
+
 
 
 
@@ -24,7 +27,8 @@ logging.getLogger("paramiko").setLevel(logging.DEBUG)
 class ClientThread(Thread):
     def __init__(self,port):
         super(ClientThread, self).__init__()
-        self.server = None # ssh server transport not known yet but we need it to send the messages
+        self.server1 = None # ssh servers transports not known yet but we need them to send the messages
+        self.server2 = None
         self.port = port
 
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -39,93 +43,147 @@ class ClientThread(Thread):
         self.t = paramiko.Transport(self.client)
         self.t.set_gss_host(socket.getfqdn(""))
         self.t.add_server_key(host_key)
-        
-        self.
-        t.set_hexdump(True)
 
         #Here, we proceed to the key negociation, the fonction is in the Paramiko's code source
         self.t.start_server()
 
-        #Here we stop the negociaiton
-        self.t.active=False
         
     def run(self):
         while True:
             try:
-                print("run client")
-
                 #We are reading the message from the client
-                ptype, message = self.t.packetizer.read_message()
-                
-                print("Received from client : ")
-                
-                print(message.get_text)
-                print(len(message.asbytes))
-                print("______________________________________________________________\n")
+                ptype, message = self.t.packetizer.read_message_after_kex()
             
                 #We are sending the message to the server
-                self.server._send_message(message)
+                #print(message)
+                self.server1._send_message(message)
+                self.server2._send_message(message)
+
             except EOFError:
                 print("Client : EOF")
-                time.sleep(1)
+                exit(0)
+                
 
               
 #Here is the part of the proxy that will handle incoming message from the vulnerable SSH server
 #and send them to the client
+#mode 0 is for redirect outgoing trafic to the client
+#mode 1 is for redirect outgoing trafic to the IDS
 class ServerThread(Thread):
-    def __init__(self,port):
+    def __init__(self,port,mode,queue):
         super(ServerThread, self).__init__()
         self.client = None # client socket not known yet
         self.sshSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sshSocket.connect(('',SSH_SERVER_PORT))
+        self.mode=mode
+        self.queue = queue
 
         #We create the transport object
         self.t = paramiko.Transport(self.sshSocket)
 
-        self.t.set_hexdump(True)
         #Here we perfom key negociation
         self.t.start_client()
 
-        #Here we stop the negociation
-        self.t.active=False
-
     def run(self):
+        compteur=0
         while True:
+            compteur= compteur + 1
             try:
-                print("run server")
-                ptype, reception = self.t.packetizer.read_message()
+                ptype, reception = self.t.packetizer.read_message_after_kex()
                 
-                print("Received from SSH server : ")
-                print(reception.asbytes)
-                
-                print("______________________________________________________________\n")
-        
-                self.client._send_message(reception)
+                if(self.mode==0):
+                    self.client._send_message(reception)
+                    #print("Return from OpenSSH:\n")
+                    #print(compteur)
+                    #print(reception)
+                    #print('\n')
+                #else:
+                    #print("Return from DropBear:\n")
+                    #print(compteur)
+                    #print(reception)
+                    #print('\n')
+                self.queue.put(reception)
             except EOFError:
                 print("Server : EOF")
-                time.sleep(1)
+                exit(0)
+                
+
+class Comparateur(Thread):
+    def __init__(self, queueDropBear, queue):
+        super(Comparateur, self).__init__()
+        self.queue = queue
+        self.queueDropBear = queueDropBear
+        self.packetListDropBear = []
+        self.packetList = []
+    def run(self):
+        while True:
+            message = self.queue.get()
+            self.packetList.append(message)
+
+            messageDropBear = self.queueDropBear.get()
+            self.packetListDropBear.append(messageDropBear)
+
+            #print("Message from OpenSSH:")
+            #print(message)
+            #print("Message from Dropbear:")
+            #print(messageDropBear)
+            self.compare(message, messageDropBear)
+            time.sleep(0.1)
+    def compare(self, packet, packetDropBear):
+        if(packetDropBear==packet):
+                print("sync")
+        else:
+            print("desync...\n")
+            print(self.packetList[len(self.packetList)-2])
+            print(packetDropBear)
+            print('\n')
+            print(self.packetListDropBear[len(self.packetListDropBear)-2])
+            print(packet)
+            print('\n')
+
+
+            if(self.packetList[len(self.packetList)-2] == packetDropBear ):
+                self.packetList.append("RESYNC")
+            elif (self.packetListDropBear[len(self.packetListDropBear)-2] == packet):
+                self.packetListDropBear.append("RESYNC")
+            else:
+                print("desync")
+        time.sleep(0.1)
+
+
 
 class ProxySSH(Thread):
-    def __init__(self,clientPort, serverPort):
+    def __init__(self, clientPort, serverPort1, serverPort2):
         super(ProxySSH, self).__init__()
         self.clientPort = clientPort
-        self.serverPort = serverPort
+        self.serverPort1 = serverPort1
+        self.serverPort2 = serverPort2
+        self.qDropBear=Queue()
+        self.q=Queue()
 
     def run(self):
         #Here we create the 2 threads
         self.clientThread = ClientThread(self.clientPort)
-        self.serverThread = ServerThread(self.serverPort)
+
+        self.serverThread1 = ServerThread(self.serverPort1,0,self.q)
+        self.serverThread2 = ServerThread(self.serverPort2,1,self.qDropBear)
+        self.comparateurThread = Comparateur(self.qDropBear,self.q)
 
         #We give to the client thread the transport object of the server 
         #thread and vice versa
-        self.clientThread.server = self.serverThread.t
-        self.serverThread.client = self.clientThread.t
+        self.clientThread.server1 = self.serverThread1.t
+        self.clientThread.server2 = self.serverThread2.t
+
+        self.serverThread1.client = self.clientThread.t
+        self.serverThread2.client = self.clientThread.t
 
         self.clientThread.start()
-        self.serverThread.start()
+        self.serverThread1.start()
+        self.serverThread2.start()
+        self.comparateurThread.start()
 
 
-proxy= ProxySSH(PROXY_PORT,SSH_SERVER_PORT)
+proxy= ProxySSH(PROXY_PORT,SSH_SERVER_PORT,SSH_SERVER_PORT_DROP_BEAR)
 proxy.start()
 
                 
