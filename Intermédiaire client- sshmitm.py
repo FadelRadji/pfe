@@ -10,7 +10,7 @@ from queue import Queue
 
 
 
-PROXY_PORT=2222
+PROXY_PORT=2221
 SSH_SERVER_PORT=22
 SSH_SERVER_PORT_DROP_BEAR=2223
 host_key = paramiko.RSAKey(filename='id_rsa')
@@ -73,8 +73,9 @@ class ServerThread(Thread):
     def __init__(self,port,mode,queue):
         super(ServerThread, self).__init__()
         self.client = None # client socket not known yet
+        self.port = port
         self.sshSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sshSocket.connect(('',SSH_SERVER_PORT))
+        self.sshSocket.connect(('',self.port))
         self.mode=mode
         self.queue = queue
 
@@ -85,36 +86,38 @@ class ServerThread(Thread):
         self.t.start_client()
 
     def run(self):
-        compteur=0
         while True:
-            compteur= compteur + 1
+
             try:
                 ptype, reception = self.t.packetizer.read_message_after_kex()
                 
                 if(self.mode==0):
                     self.client._send_message(reception)
                     #print("Return from OpenSSH:\n")
-                    #print(compteur)
                     #print(reception)
                     #print('\n')
                 #else:
                     #print("Return from DropBear:\n")
-                    #print(compteur)
                     #print(reception)
                     #print('\n')
                 self.queue.put(reception)
             except EOFError:
-                print("Server : EOF")
+                if(self.mode==0):
+                    print("Server 1 : EOF")
+                elif(self.mode==1):
+                    print("DropBear Server : EOF")
                 exit(0)
                 
 
 class Comparateur(Thread):
+
     def __init__(self, queueDropBear, queue):
         super(Comparateur, self).__init__()
         self.queue = queue
         self.queueDropBear = queueDropBear
         self.packetListDropBear = []
         self.packetList = []
+
     def run(self):
         while True:
             message = self.queue.get()
@@ -122,35 +125,18 @@ class Comparateur(Thread):
 
             messageDropBear = self.queueDropBear.get()
             self.packetListDropBear.append(messageDropBear)
-
-            #print("Message from OpenSSH:")
-            #print(message)
-            #print("Message from Dropbear:")
-            #print(messageDropBear)
             self.compare(message, messageDropBear)
             time.sleep(0.1)
+
     def compare(self, packet, packetDropBear):
+        print("Message from OpenSSH:")
+        print(packet)
+        print("Message from Dropbear:")
+        print(packetDropBear)
         if(packetDropBear==packet):
-                print("sync")
+            print("sync\n")
         else:
             print("desync...\n")
-            print(self.packetList[len(self.packetList)-2])
-            print(packetDropBear)
-            print('\n')
-            print(self.packetListDropBear[len(self.packetListDropBear)-2])
-            print(packet)
-            print('\n')
-
-
-            if(self.packetList[len(self.packetList)-2] == packetDropBear ):
-                self.packetList.append("RESYNC")
-            elif (self.packetListDropBear[len(self.packetListDropBear)-2] == packet):
-                self.packetListDropBear.append("RESYNC")
-            else:
-                print("desync")
-        time.sleep(0.1)
-
-
 
 class ProxySSH(Thread):
     def __init__(self, clientPort, serverPort1, serverPort2):
